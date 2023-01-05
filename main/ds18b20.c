@@ -15,7 +15,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-#include "esp32/rom/ets_sys.h"
+#include "esp32s2/rom/ets_sys.h"
+#include "esp_timer.h"
 #include "ds18b20.h"
 
 // OneWire commands
@@ -298,7 +299,7 @@ float ds18b20_get_temp(void) {
       {
         ds18b20_send_byte(0xCC);
         ds18b20_send_byte(0x44);
-        vTaskDelay(750 / portTICK_RATE_MS);
+        vTaskDelay(750 / portTICK_PERIOD_MS);
         check=ds18b20_RST_PULSE();
         ds18b20_send_byte(0xCC);
         ds18b20_send_byte(0xBE);
@@ -317,7 +318,7 @@ float ds18b20_get_temp(void) {
 
 void ds18b20_init(int GPIO) {
 	DS_GPIO = GPIO;
-	gpio_pad_select_gpio(DS_GPIO);
+	esp_rom_gpio_pad_select_gpio(DS_GPIO);
 	init = 1;
 }
 
