@@ -1,7 +1,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "esp_log.h"
-#include "../lib/ds18b20/ds18b20.h"
+#include "lib/ds18b20/ds18b20.h"
 
 extern "C"
 {

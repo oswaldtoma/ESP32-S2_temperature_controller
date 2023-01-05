@@ -1,3 +1,0 @@
-[submodule "main/lib/ds18b20"]
-	path = main/lib/ds18b20
-	url = https://github.com/feelfreelinux/ds18b20.git
